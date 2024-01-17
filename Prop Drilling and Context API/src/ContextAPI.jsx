@@ -17,6 +17,9 @@ function ContextAPI() {
 }
 
 function Count() {
+   console.log('Am I re-rendering?');
+   // ? Even if this component is not using Context variable, it still gets re-rendered (because if parent rerenders tehn all of its children gets re-rendered)
+
    return (
       <div>
          <CountRender />
