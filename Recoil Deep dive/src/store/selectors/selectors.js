@@ -1,6 +1,6 @@
 import { selector } from 'recoil';
 import {
-   allNotification,
+   allNotificationAtom,
    jobsAtom,
    messagingAtom,
    networkAtom,
@@ -27,7 +27,7 @@ export const totalNotificationSelector = selector({
 export const totalNotificationSelectorForAsyncQueries = selector({
    key: 'totalNotificationSelectorForAsyncQueries',
    get: ({ get }) => {
-      const allNotifications = get(allNotification);
+      const allNotifications = get(allNotificationAtom);
 
       return (
          allNotifications.network +
