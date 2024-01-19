@@ -8,6 +8,7 @@ export const todoSelectorFamily = atomFamily({
          (id) =>
          // eslint-disable-next-line no-unused-vars
          async ({ get }) => {
+            await new Promise((r) => setTimeout(r, 300));
             const data = await fetch(
                `https://sum-server.100xdevs.com/todo?id=${id}`
             );
