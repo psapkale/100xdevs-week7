@@ -24,8 +24,8 @@ export const totalNotificationSelector = selector({
    },
 });
 
-export const totalNotificationSelectorFromAsyncQueries = selector({
-   key: 'totalNotificationSelectorFromAsyncQueries',
+export const totalNotificationSelectorForAsyncQueries = selector({
+   key: 'totalNotificationSelectorForAsyncQueries',
    get: ({ get }) => {
       const allNotifications = get(allNotification);
 

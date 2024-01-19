@@ -1,25 +1,12 @@
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { allNotification } from './store/atoms/atom';
-import { totalNotificationSelectorFromAsyncQueries } from './store/selectors/selectors';
-import { useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
+import { allNotificationAtom } from './store/atoms/atom';
+import { totalNotificationSelectorForAsyncQueries } from './store/selectors/selectors';
 
 const AsyncDataQueries = () => {
-   const [networkCount, setNetworkCount] = useRecoilState(allNotification);
+   const networkCount = useRecoilValue(allNotificationAtom);
    const totalNotificationCount = useRecoilValue(
-      totalNotificationSelectorFromAsyncQueries
+      totalNotificationSelectorForAsyncQueries
    );
-
-   useEffect(() => {
-      // ? can not make useEffect async
-      setData();
-   }, []);
-
-   const setData = async () => {
-      const data = await fetch('https://sum-server.100xdevs.com/notifications');
-      const json = await data.json();
-
-      setNetworkCount(json);
-   };
 
    return (
       <>

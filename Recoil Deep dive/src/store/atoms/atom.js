@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 export const networkAtom = atom({
    key: 'networkAtom',
@@ -20,12 +20,16 @@ export const messagingAtom = atom({
    default: 0,
 });
 
-export const allNotification = atom({
-   key: 'allNotification',
-   default: {
-      network: 0,
-      jobs: 0,
-      messaging: 0,
-      notifications: 0,
-   },
+export const allNotificationAtom = atom({
+   key: 'allNotificationAtom',
+   default: selector({
+      key: 'allNotificationSelector',
+      get: async () => {
+         const data = await fetch(
+            'https://sum-server.100xdevs.com/notifications'
+         );
+
+         return await data.json();
+      },
+   }),
 });
